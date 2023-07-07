@@ -69,9 +69,9 @@ definePageMeta({ layout: false })
               <Icon name="teenyicons:eye-outline" />
             </GlobalButton>
 
-            <GlobalButton class="absolute  mx-2" type="default">
+            <!-- <GlobalButton class="absolute  mx-2" type="default">
               <Icon name="teenyicons:eye-closed-solid" />
-            </GlobalButton>
+            </GlobalButton> -->
           </div>
         </div>
 
