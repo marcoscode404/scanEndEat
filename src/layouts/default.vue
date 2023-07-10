@@ -4,7 +4,7 @@
 
 <template>
     <div class="h-screen max-h-screen overflow-hidden">
-        <header class="fixed w-full bg-white h-10 z-[999] rounded-br-lg rounded-bl-lg
+        <header class="fixed w-full border-b-2  bg-white h-10 z-[999] rounded-br-lg rounded-bl-lg
                            p-2 px-4  select-none
                             flex items-center justify-between">
 
@@ -12,12 +12,14 @@
                 <slot name="headerNavigation"></slot>
             </div>
 
-            <div>
+            <div class="font-bold">
                 <slot name="navigation">Marcos Vinicius Marques Gomes</slot>
             </div>
 
             <slot name="header">
-                <Icon class="text-lg" name="simple-line-icons:menu" />
+                <div class="bg-white rounded-full border px-2 py-1">
+                    <Icon class="text-lg text-black" name="simple-line-icons:menu" />
+                </div>
             </slot>
             <!-- button Profile -->
         </header>
