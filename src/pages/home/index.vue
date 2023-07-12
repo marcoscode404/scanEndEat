@@ -1,21 +1,32 @@
 <script setup lang="tsx">
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
+import { useNow, useDateFormat } from '@vueuse/core';
+
+const formatted = useDateFormat(useNow(), 'DD-MM-YYYY HH:mm:ss')
+const selectedTab = ref(0)
+
 </script>
 
 <template>
     <TabGroup>
-        <TabList class="w-full h-10 rounded-t-3xl bg-black text-white font-semibold flex justify-center gap-20
-        absolute bottom-0
+        <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-black text-white font-semibold flex justify-center gap-20
+        absolute bottom-0 items-center
         ">
-            <Tab>Home</Tab>
-            <Tab>Histórico</Tab>
+            <Tab v-slot="{ selected }" class="h-5">
+                <button :class="selected ? 'text-msGreen500 font-semibold' : 'text-white'">Home</button>
+            </Tab>
+            <Tab v-slot="{ selected }" class="h-5 select-none border-none">
+                <button :class="selected ? 'text-msGreen500 font-semibold' : 'text-white'">Histórico</button>
+            </Tab>
         </TabList>
+
+
         <TabPanels>
             <TabPanel>
                 <div class="heightCalcManager">
                     <div class="container m-auto mt-2 ">
                         <h1 class="text-center">
-                            Data:22/06/23 as 14:25
+                            {{ formatted }}
                         </h1>
 
                         <div class=" w-52 mt-40 h-40 m-auto">
@@ -30,9 +41,22 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 
                     </div>
                 </div>
+            </TabPanel>
+
+
+            <TabPanel>
+                <div class="heightCalcManager">
+                    <div class="container m-auto mt-2 ">
+
+
+                        <div class=" w-52 mt-40 h-40 m-auto">
+                            asdsad
+                        </div>
+
+                    </div>
+                </div>
 
             </TabPanel>
-            <TabPanel>Content 2</TabPanel>
         </TabPanels>
     </TabGroup>
 </template>
