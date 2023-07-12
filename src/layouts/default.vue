@@ -17,9 +17,9 @@
             </div>
 
             <slot name="header">
-                <div class="bg-white rounded-full border px-2 py-1">
+                <GlobalButton class="bg-white rounded-full border px-2 py-1">
                     <Icon class="text-lg text-black" name="simple-line-icons:menu" />
-                </div>
+                </GlobalButton>
             </slot>
             <!-- button Profile -->
         </header>
