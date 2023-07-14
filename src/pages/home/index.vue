@@ -5,57 +5,64 @@ import { useNow, useDateFormat } from '@vueuse/core';
 const formatted = useDateFormat(useNow(), 'DD-MM-YYYY HH:mm:ss')
 const selectedTab = ref(0)
 
+let dataFake = reactive([
+    '14-07-2023 13:56:33',
+    '14-07-2023 13:56:33',
+    '14-07-2023 13:56:33',
+
+])
+
+
 </script>
 
 <template>
+    <h1 class="text-center">
+        {{ formatted }}
+    </h1>
+
+
     <TabGroup>
-        <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-black text-white font-semibold flex justify-center gap-20
+        <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-red-500 text-white font-semibold flex justify-center gap-20
         absolute bottom-0 items-center
         ">
             <Tab v-slot="{ selected }" class="h-5">
-                <button :class="selected ? 'text-msGreen500 font-semibold' : 'text-white'">Home</button>
+                <button class="select-none" :class="selected ? 'text-slate-100 font-bold' : 'text-white'">Home</button>
             </Tab>
             <Tab v-slot="{ selected }" class="h-5 select-none border-none">
-                <button :class="selected ? 'text-msGreen500 font-semibold' : 'text-white'">Histórico</button>
+                <button class="select-none" :class="selected ? 'text-slate-100 font-bold' : 'text-white'">Histórico</button>
             </Tab>
         </TabList>
 
 
         <TabPanels>
             <TabPanel>
-                <div class="heightCalcManager">
-                    <div class="container m-auto mt-2 ">
-                        <h1 class="text-center">
-                            {{ formatted }}
-                        </h1>
-
-                        <div class=" w-52 mt-40 h-40 m-auto">
-                            <img src="../../assets/imgQrCode.svg" class=" w-full h-full" />
+                <div class="h-[70vh] flex justify-center items-center">
+                    <div>
+                        <div class="container m-auto mt-2">
+                            <div class=" w-52  h-40 m-auto">
+                                <img src="../../assets/imgQrCode.svg" class=" w-full h-full" />
+                            </div>
 
                             <GlobalButton type="defaultSecondary"
                                 class="flex justify-center gap-1 bg-black text-white w-full py-2 mt-10">
                                 Camera
                                 <Icon name="jam:camera" class="text-2xl" />
                             </GlobalButton>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </TabPanel>
 
 
-            <TabPanel>
-                <div class="heightCalcManager">
-                    <div class="container m-auto mt-2 ">
-
-
-                        <div class=" w-52 mt-40 h-40 m-auto">
-                            asdsad
+            <TabPanel class="h-[100vh]">
+                <div class="container  m-auto mt-2 ">
+                    <h1 class="text-center font-semibold">Histórico Mes Atual</h1>
+                    <div class=" w-52 h-[70vh] m-auto">
+                        <div class="bg-gray-200 w-full" v-for="item in dataFake">
                         </div>
-
                     </div>
                 </div>
-
             </TabPanel>
         </TabPanels>
     </TabGroup>
