@@ -2,27 +2,38 @@
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import { useNow, useDateFormat } from '@vueuse/core';
 
+import { ref } from 'vue'
+import { useIntervalFn } from '@vueuse/core'
+import { rand } from '@vueuse/shared'
+
 const formatted = useDateFormat(useNow(), 'DD-MM-YYYY HH:mm:ss')
 const selectedTab = ref(0)
 
-let dataFake = reactive([
-    '14-07-2023 13:56:33',
-    '14-07-2023 13:56:33',
-    '14-07-2023 13:56:33',
+let dataFake = reactive([1, 2, 3, 4, 6, 7 ,8 ,9,10 ,11,12,13,14,15])
 
-])
+const greetings = ['😋', '🍲', '🍠', '🍚' ,'🍉', '🍊', '🍘', '🍳', '🍞', '🥗']
+const word = ref('🧑🏻‍🍳')
+const interval = ref(500)
 
+const { pause, resume, isActive } = useIntervalFn(() => {
+  word.value = greetings[rand(0, greetings.length - 1)]
+}, interval)
+
+setInterval(() => {
+    pause()
+    word.value = '🧑🏻‍🍳'
+}, 10000)
 
 </script>
 
 <template>
-    <h1 class="text-center">
+    <h1 class="text-center mt-2">
         {{ formatted }}
     </h1>
 
 
     <TabGroup>
-        <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-red-500 text-white font-semibold flex justify-center gap-20
+        <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
         absolute bottom-0 items-center
         ">
             <Tab v-slot="{ selected }" class="h-5">
@@ -39,12 +50,17 @@ let dataFake = reactive([
                 <div class="h-[70vh] flex justify-center items-center">
                     <div>
                         <div class="container m-auto mt-2">
-                            <div class=" w-52  h-40 m-auto">
+
+                            <p class="text-center select-none">
+                                <figure class="bg-black w-7 h-7 flex items-center justify-center m-auto rounded-full">{{ word }}</figure>
+                            </p>
+
+                            <div class=" w-52  h-40 m-auto select-none">
                                 <img src="../../assets/imgQrCode.svg" class=" w-full h-full" />
                             </div>
 
                             <GlobalButton type="defaultSecondary"
-                                class="flex justify-center gap-1 bg-black text-white w-full py-2 mt-10">
+                                class="flex justify-center gap-1 select-none bg-black text-white w-full py-2 mt-10">
                                 Camera
                                 <Icon name="jam:camera" class="text-2xl" />
                             </GlobalButton>
@@ -56,11 +72,12 @@ let dataFake = reactive([
 
 
             <TabPanel class="h-[100vh]">
-                <div class="container  m-auto mt-2 ">
+                <div class="container rounded-lg m-auto mt-2 ">
                     <h1 class="text-center font-semibold">Histórico Mes Atual</h1>
-                    <div class=" w-52 h-[70vh] m-auto">
-                        <div class="bg-gray-200 w-full" v-for="item in dataFake">
-                        </div>
+                    <div class=" w-full h-[70vh] rounded-md m-auto overflow-y-auto">
+                        <ul class="w-full flex gap-5 justify-center" v-for="item in dataFake">
+                            <li class="py-2 w-full h-full text-white text-center border bg-[#4B5563]">Dia: 18-07-2023 13:23:47</li>
+                        </ul>
                     </div>
                 </div>
             </TabPanel>

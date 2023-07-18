@@ -4,8 +4,8 @@
 
 <template>
     <div class="h-screen max-h-screen overflow-hidden">
-        <header class="fixed w-full border-b-2  bg-white h-10 z-[999] rounded-br-lg rounded-bl-lg
-                           p-2 px-4  select-none
+        <header class="fixed w-full border-b-2  bg-black h-10 z-[999] rounded-br-lg rounded-bl-lg
+                           p-2 px-4  select-none text-white
                             flex items-center justify-between">
 
             <div class="flex gap-4 items-center">
@@ -17,8 +17,8 @@
             </div>
 
             <slot name="header">
-                <GlobalButton type="default" class="bg-white rounded-full border border-msRed600 px-2 py-1">
-                    <Icon class="text-lg text-msRed600" name="simple-line-icons:menu" />
+                <GlobalButton type="default" class="flex items-center  rounded-full ">
+                    <Icon class="text-lg text-white w-7 h-6" name="solar:hamburger-menu-bold" />
                 </GlobalButton>
             </slot>
             <!-- button Profile -->
