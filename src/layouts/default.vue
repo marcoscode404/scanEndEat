@@ -17,7 +17,7 @@
             </div>
 
             <slot name="header">
-                <GlobalButton type="default" class="flex items-center  rounded-full ">
+                <GlobalButton type="default" class="flex items-center  rounded-full border-2 w-7 ">
                     <Icon class="text-lg text-white w-7 h-6" name="solar:hamburger-menu-bold" />
                 </GlobalButton>
             </slot>

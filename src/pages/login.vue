@@ -76,17 +76,21 @@ definePageMeta({ layout: false })
         </div>
 
         <!-- Botão de Acessar -->
-        <button class="py-2  bg-black text-white font-semibold rounded-lg shadow-md focus:outline-none 
-                              focus:ring-2 focus:ring-red-500 focus:ring-opacity-75 w-full
-                            ">
-          <div>
-            Acessar
-            <Icon name="material-symbols:login-rounded" />
-          </div>
-        </button>
+        <navigateTo @click="navigateTo('home')">
+          <button class="py-2  bg-black text-white font-semibold rounded-lg shadow-md focus:outline-none 
+                                focus:ring-2 focus:ring-red-500 focus:ring-opacity-75 w-full
+                              ">
+            <div>
+              Acessar
+              <Icon name="material-symbols:login-rounded" />
+            </div>
+          </button>
+        </navigateTo>
 
         <!-- <div class="text-msGray300 text-sm mt-5 ">Versão 1.0.0</div> -->
       </form>
     </div>
   </main>
 </template>
+
+
