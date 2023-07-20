@@ -31,7 +31,6 @@ setInterval(() => {
         {{ formatted }}
     </h1>
 
-
     <TabGroup>
         <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
         absolute bottom-0 items-center
@@ -44,21 +43,19 @@ setInterval(() => {
             </Tab>
         </TabList>
 
-
         <TabPanels>
             <TabPanel>
                 <div class="h-[70vh] flex justify-center items-center">
                     <div>
                         <div class="container m-auto mt-2 relative">
-
-                            <div
-                                class=" w-40 h-40 border-2 border-black m-auto select-none bg-gray-900 rounded-lg px-2 relative flex justify-center items-center">
+                            <div class=" w-40 h-40 border-2 border-black m-auto select-none bg-black
+                                 rounded-lg px-2 relative flex justify-center items-center">
                                 <p class=" border-2 border-white rounded-full text-center select-none absolute">
                                 <figure class="bg-black w-7 h-7 flex items-center justify-center m-auto rounded-full">
                                     {{ word }}
                                 </figure>
                                 </p>
-                                <img src="../../assets/img2.svg" class="w-full h-full" />
+                                <img src="../../assets/img3.svg" class="w-full h-full" />
                             </div>
 
                             <GlobalButton type="defaultSecondary"
