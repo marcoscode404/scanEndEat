@@ -8,6 +8,7 @@ import { rand } from '@vueuse/shared'
 
 const formatted = useDateFormat(useNow(), 'DD-MM-YYYY HH:mm:ss')
 const selectedTab = ref(0)
+const { $anime } = useNuxtApp()
 
 let dataFake = reactive([1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
 
@@ -24,12 +25,24 @@ setInterval(() => {
     word.value = '🧑🏻‍🍳'
 }, 200000)
 
+
+onMounted(() => {
+    $anime({
+        targets: '.title',
+        translateX: 270,
+    })
+})
+
 </script>
 
 <template>
     <h1 class="text-center mt-2">
         {{ formatted }}
     </h1>
+
+    <div>
+        <h1 class="title">Nuxt Anime</h1>
+    </div>
 
     <TabGroup>
         <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20

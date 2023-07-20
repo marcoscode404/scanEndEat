@@ -5,10 +5,15 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-headlessui',
     '@pinia/nuxt',
+    '@hypernym/nuxt-anime'
   ],
 
   ssr: false,
   srcDir: 'src/',
+
+  anime: {
+    provide: true
+  },
 
   // config pwa
   app: {
