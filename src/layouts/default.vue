@@ -45,7 +45,7 @@ function setIsOpenDropdown(value) {
                         </button>
                     </li>
 
-                    <li class="px-4 py-1 flex justify-center text-base">Versão 1.0.0</li>
+                    <li class="px-4 py-1 flex justify-center text-base">Versão 1.0</li>
                 </ul>
             </DialogPanel>
         </Dialog>
