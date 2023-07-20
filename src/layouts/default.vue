@@ -1,4 +1,11 @@
 <script setup>
+import { Dialog, DialogPanel } from '@headlessui/vue';
+
+const isOpen = ref(false)
+function setIsOpenDropdown(value) {
+    isOpen.value = value
+}
+
 
 </script>
 
@@ -17,7 +24,7 @@
             </div>
 
             <slot name="header">
-                <GlobalButton type="default" class="flex items-center  rounded-full border-2 w-7 ">
+                <GlobalButton  @click="setIsOpenDropdown(true)" type="default" class="flex items-center  rounded-full border-2 w-7 ">
                     <Icon class="text-lg text-white w-7 h-6" name="solar:hamburger-menu-bold" />
                 </GlobalButton>
             </slot>
@@ -25,30 +32,23 @@
         </header>
 
         <!-- Dropdown menu -->
-        <!-- <Dialog :open="isOpen" @close="setIsOpenDropdown" id="dropdown" class="absolute z-[9999999] top-12 h-full
+        <Dialog :open="isOpen" @close="setIsOpenDropdown" id="dropdown" class="absolute z-[9999999] top-12 h-full
                                      divide-gray-100 bg-[#1212122e] backdrop-blur-sm  w-screen  rounded-lg">
 
             <DialogPanel class="w-3/3 h-48 m-auto rounded-lg bg-white border-2 border-gray-200 shadow-xl">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-                    <li class="text-center text-lg border-b-2 pb-2 font-semibold">
-                        {{ firstNameInitial.first_name }}
-                    </li>
-
                     <li>
-                        <button @click="useLogout" class="w-full flex justify-center gap-2 px-4 py-4 hover:bg-gray-100 
+                        <button class="w-full flex justify-center gap-2 px-4 py-4 hover:bg-gray-100 
                                                                            text-base cursor-pointer border-b-2">
                             <Icon name="material-symbols:logout-rounded" class="h-6 w-6 text-red-600" />
                             Logout
                         </button>
                     </li>
 
-                    <li class="px-4 py-3 flex justify-center text-base">
-                        <div v-if="memory">{{ (((memory.totalJSHeapSize / 1024)) / 1024).toFixed(2) }} MB</div>
-                    </li>
                     <li class="px-4 py-1 flex justify-center text-base">Versão 1.0.0</li>
                 </ul>
             </DialogPanel>
-        </Dialog> -->
+        </Dialog>
 
         <main class="pt-10 h-full w-screen">
             <slot></slot>
