@@ -1,6 +1,7 @@
 <script setup lang="tsx">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import { useNow, useDateFormat } from '@vueuse/core';
+import anime from 'animejs/lib/anime.es.js';
 
 import { ref } from 'vue'
 import { useIntervalFn } from '@vueuse/core'
@@ -25,11 +26,26 @@ setInterval(() => {
     word.value = '🧑🏻‍🍳'
 }, 200000)
 
+let el = ref({})
 
 onMounted(() => {
     $anime({
-        targets: '.title',
-        translateX: 270,
+        targets: '.function-based-values-demo el',
+        translateX: function (el: any) {
+            return el.value.getAttribute('data-x');
+        },
+        translateY: function (el: any, i: any) {
+            return 50 + (-50 * i);
+        },
+        scale: function (el: any, i: any, l: any) {
+            return (l - i) + .25;
+        },
+        rotate: function () { return anime.random(-360, 360); },
+        borderRadius: function () { return ['50%', anime.random(10, 35) + '%']; },
+        duration: function () { return anime.random(1200, 1800); },
+        delay: function () { return anime.random(0, 400); },
+        direction: 'alternate',
+        loop: true
     })
 })
 
@@ -40,9 +56,9 @@ onMounted(() => {
         {{ formatted }}
     </h1>
 
-    <div>
-        <h1 class="title">Nuxt Anime</h1>
-    </div>
+    <div class="function-based-values-demo el absolute bg-red-500 rounded-full w-10 h-10"></div>
+    <div class="function-based-values-demo el absolute bg-blue-500 rounded-full w-10 h-10"></div>
+    <div class="function-based-values-demo absolute bg-green-500 rounded-full w-10 h-10"></div>
 
     <TabGroup>
         <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
