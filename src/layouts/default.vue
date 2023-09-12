@@ -6,6 +6,7 @@ function setIsOpenDropdown(value) {
     isOpen.value = value
 }
 
+const isOpenn = ref(false)
 
 </script>
 
@@ -23,13 +24,28 @@ function setIsOpenDropdown(value) {
                 <slot name="navigation">Marcos Vinicius Marques Gomes</slot>
             </div>
 
-            <slot name="header">
-                <GlobalButton  @click="setIsOpenDropdown(true)" type="default" class="flex items-center  rounded-full border-2 w-7 ">
+            <!-- <slot name="header">
+                <GlobalButton @click="setIsOpenDropdown(true)" type="default"
+                    class="flex items-center  rounded-full border-2 w-7 ">
                     <Icon class="text-lg text-white w-7 h-6" name="solar:hamburger-menu-bold" />
                 </GlobalButton>
-            </slot>
+            </slot> -->
             <!-- button Profile -->
+
+            <!-- experimental -->
+
+            <div>
+                <UButton label="Open" @click="isOpenn = true" />
+                <USlideover v-model="isOpenn" :overlay="false">
+                    <div class="p-4 flex-1">
+                        <Placeholder class="h-full" />
+                    </div>
+                </USlideover>
+            </div>
+
         </header>
+
+
 
         <!-- Dropdown menu -->
         <Dialog :open="isOpen" @close="setIsOpenDropdown" id="dropdown" class="absolute z-[9999999] top-12 h-full

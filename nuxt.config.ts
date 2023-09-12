@@ -1,15 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss',
     'nuxt-icon',
-    'nuxt-headlessui',
     '@pinia/nuxt',
+    '@nuxt/ui',
     '@hypernym/nuxt-anime'
   ],
 
   ssr: false,
   srcDir: 'src/',
+
+  pinia: {
+    autoImports: ["defineStore"],
+  },
 
   anime: {
     provide: true

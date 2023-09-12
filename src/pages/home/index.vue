@@ -26,29 +26,6 @@ setInterval(() => {
     word.value = '🧑🏻‍🍳'
 }, 200000)
 
-let el = ref({})
-
-onMounted(() => {
-    $anime({
-        targets: '.function-based-values-demo el',
-        translateX: function (el: any) {
-            return el.value.getAttribute('data-x');
-        },
-        translateY: function (el: any, i: any) {
-            return 50 + (-50 * i);
-        },
-        scale: function (el: any, i: any, l: any) {
-            return (l - i) + .25;
-        },
-        rotate: function () { return anime.random(-360, 360); },
-        borderRadius: function () { return ['50%', anime.random(10, 35) + '%']; },
-        duration: function () { return anime.random(1200, 1800); },
-        delay: function () { return anime.random(0, 400); },
-        direction: 'alternate',
-        loop: true
-    })
-})
-
 </script>
 
 <template>
@@ -56,62 +33,38 @@ onMounted(() => {
         {{ formatted }}
     </h1>
 
-    <div class="function-based-values-demo el absolute bg-red-500 rounded-full w-10 h-10"></div>
-    <div class="function-based-values-demo el absolute bg-blue-500 rounded-full w-10 h-10"></div>
-    <div class="function-based-values-demo absolute bg-green-500 rounded-full w-10 h-10"></div>
-
-    <TabGroup>
-        <TabList :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
+    <div :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
         absolute bottom-0 items-center
         ">
-            <Tab v-slot="{ selected }" class="h-5">
-                <button class="select-none" :class="selected ? 'text-slate-100 font-bold' : 'text-white'">Home</button>
-            </Tab>
-            <Tab v-slot="{ selected }" class="h-5 select-none border-none">
-                <button class="select-none" :class="selected ? 'text-slate-100 font-bold' : 'text-white'">Histórico</button>
-            </Tab>
-        </TabList>
+        <div class="h-5 select-none border-none">
+            <NuxtLink :href="'/home'" class="select-none">Home</NuxtLink>
+        </div>
+        <div class="h-5 select-none border-none">
+            <NuxtLink :href="'/home/history'" class="select-none">Histórico</NuxtLink>
+        </div>
+    </div>
 
-        <TabPanels>
-            <TabPanel>
-                <div class="h-[70vh] flex justify-center items-center">
-                    <div>
-                        <div class="container m-auto mt-2 relative">
-                            <div class=" w-40 h-40 border-2 border-black m-auto select-none bg-black
+    <div class="h-[70vh] flex justify-center items-center">
+        <div>
+            <div class="container m-auto mt-2 relative">
+                <div class=" w-40 h-40 border-2 border-black m-auto select-none bg-black
                                  rounded-lg px-2 relative flex justify-center items-center">
-                                <p class=" border-2 border-white rounded-full text-center select-none absolute">
-                                <figure class="bg-black w-7 h-7 flex items-center justify-center m-auto rounded-full">
-                                    {{ word }}
-                                </figure>
-                                </p>
-                                <img src="../../assets/img3.svg" class="w-full h-full" />
-                            </div>
-
-                            <GlobalButton type="defaultSecondary"
-                                class="flex justify-center gap-1 select-none bg-black text-white w-52 py-2 mt-10">
-                                Camera
-                                <Icon name="jam:camera" class="text-2xl" />
-                            </GlobalButton>
-
-                        </div>
-                    </div>
+                    <p class=" border-2 border-white rounded-full text-center select-none absolute">
+                    <figure class="bg-black w-7 h-7 flex items-center justify-center m-auto rounded-full">
+                        {{ word }}
+                    </figure>
+                    </p>
+                    <img src="../../assets/img3.svg" class="w-full h-full" />
                 </div>
-            </TabPanel>
 
-
-            <TabPanel class="h-[100vh]">
-                <div class="container rounded-lg m-auto mt-2 ">
-                    <h1 class="text-center font-semibold">Histórico Mes Atual</h1>
-                    <div class=" w-full h-[70vh] rounded-md m-auto overflow-y-auto">
-                        <ul class="w-full flex gap-5 justify-center" v-for="item in dataFake">
-                            <li class="py-2 w-full h-full text-white text-center border bg-[#4B5563]">Dia: 18-07-2023
-                                13:23:47</li>
-                        </ul>
-                    </div>
-                </div>
-            </TabPanel>
-        </TabPanels>
-    </TabGroup>
+                <GlobalButton type="defaultSecondary"
+                    class="flex justify-center gap-1 select-none bg-black text-white w-52 py-2 mt-10">
+                    Camera
+                    <Icon name="jam:camera" class="text-2xl" />
+                </GlobalButton>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style>

@@ -12,10 +12,11 @@ const explode = async () => {
 </script>
 
 <template>
-    <div>
-        <button @click="explode">Show confetti</button>
-        <ConfettiExplosion v-if="visible"  :stageWidth="5000" :stageHeight="1000" 
-        :force="0.3" :duration="5000" :particleSize="10"  :particleCount="30"
-        />
+    <div class=" h-full flex justify-center">
+        <div class="w-20 ">
+            <button @click="explode">Show confetti</button>
+            <ConfettiExplosion v-if="visible" :stageWidth="500" :stageHeight="500" :force="0.3" :duration="3000"
+                :particleSize="10" :particleCount="200" />
+        </div>
     </div>
 </template>
