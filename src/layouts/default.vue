@@ -24,50 +24,38 @@ const isOpenn = ref(false)
                 <slot name="navigation">Marcos Vinicius Marques Gomes</slot>
             </div>
 
-            <!-- <slot name="header">
-                <GlobalButton @click="setIsOpenDropdown(true)" type="default"
-                    class="flex items-center  rounded-full border-2 w-7 ">
-                    <Icon class="text-lg text-white w-7 h-6" name="solar:hamburger-menu-bold" />
-                </GlobalButton>
-            </slot> -->
+            <slot name="header">
+                <div>
+                    <GlobalButton @click="isOpenn = true" type="default"
+                        class="flex items-center  rounded-full border-2 w-7 bg-white">
+                        <Icon class="text-lg text-black w-7 h-6" name="solar:hamburger-menu-broken" />
+                    </GlobalButton>
+
+                    <USlideover v-model="isOpenn" :overlay="false">
+                        <div class="p-4 flex-1 bg-black">
+                            <button @click="isOpenn = false" class="mt-10 text-white w-10 h-10 bg-red-600">X</button>
+                            <Placeholder class="h-full" />
+                        </div>
+                    </USlideover>
+                </div>
+            </slot>
             <!-- button Profile -->
-
-            <!-- experimental -->
-
-            <div>
-                <UButton label="Open" @click="isOpenn = true" />
-                <USlideover v-model="isOpenn" :overlay="false">
-                    <div class="p-4 flex-1">
-                        <Placeholder class="h-full" />
-                    </div>
-                </USlideover>
-            </div>
-
         </header>
-
-
-
-        <!-- Dropdown menu -->
-        <Dialog :open="isOpen" @close="setIsOpenDropdown" id="dropdown" class="absolute z-[9999999] top-12 h-full
-                                     divide-gray-100 bg-[#1212122e] backdrop-blur-sm  w-screen  rounded-lg">
-
-            <DialogPanel class="w-3/3 h-48 m-auto rounded-lg bg-white border-2 border-gray-200 shadow-xl">
-                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-                    <li>
-                        <button class="w-full flex justify-center gap-2 px-4 py-4 hover:bg-gray-100 
-                                                                           text-base cursor-pointer border-b-2">
-                            <Icon name="material-symbols:logout-rounded" class="h-6 w-6 text-red-600" />
-                            Logout
-                        </button>
-                    </li>
-
-                    <li class="px-4 py-1 flex justify-center text-base">Versão 1.0</li>
-                </ul>
-            </DialogPanel>
-        </Dialog>
 
         <main class="pt-10 h-full w-screen">
             <slot></slot>
+
+            <slot name="footer">
+                <div class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
+                    absolute bottom-0 items-center">
+                    <div class="h-5 select-none border-none">
+                        <NuxtLink :href="'/home'" class="select-none">Home</NuxtLink>
+                    </div>
+                    <div class="h-5 select-none border-none">
+                        <NuxtLink :href="'/home/history'" class="select-none">Histórico</NuxtLink>
+                    </div>
+                </div>
+            </slot>
         </main>
     </div>
 </template>

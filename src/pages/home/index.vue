@@ -33,7 +33,7 @@ setInterval(() => {
         {{ formatted }}
     </h1>
 
-    <div :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
+    <!-- <div :selectedIndex="selectedTab" class="w-full h-10 rounded-t-3xl bg-[#212121] text-white font-semibold flex justify-center gap-20
         absolute bottom-0 items-center
         ">
         <div class="h-5 select-none border-none">
@@ -42,7 +42,7 @@ setInterval(() => {
         <div class="h-5 select-none border-none">
             <NuxtLink :href="'/home/history'" class="select-none">Histórico</NuxtLink>
         </div>
-    </div>
+    </div> -->
 
     <div class="h-[70vh] flex justify-center items-center">
         <div>
